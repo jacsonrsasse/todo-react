@@ -1,12 +1,13 @@
+import styled, { createGlobalStyle } from "styled-components";
 import { useState } from "react";
 import { TasksGrid } from "../TasksGrid/TasksGrid";
-import "./App.css";
+import { ButtonArea } from "../ButtonArea";
 
 function App() {
     return (
         <div id="app">
             <TasksGrid />
-            <div></div>
+            <ButtonArea />
         </div>
     );
 }
