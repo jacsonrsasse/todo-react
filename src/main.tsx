@@ -1,8 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import App from "./components/App/";
-import "./index.css";
+
+const theme = {
+    corSistemaBase1: "#7d838f",
+    corSistemaBase2: "#9ba0a9",
+    corSistemaBase3: "#bcbfc6",
+    corSistemaBase4: "#aab0b6",
+    corSistemaBase5: "#d7d8da",
+    corSistemaBase6: "#fefeff",
+    corSistemaBase7: "#b5b5b5",
+    corSistemaBase8: "#dadada",
+    corSistemaBase9: "#ffffff",
+};
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -10,21 +21,22 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
-`;
 
-const AppWrapper = styled.div`
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    #root {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: ${theme.corSistemaBase7};
+    }
 `;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <GlobalStyle />
-        <AppWrapper>
+        <ThemeProvider theme={theme}>
             <App />
-        </AppWrapper>
+        </ThemeProvider>
     </React.StrictMode>
 );
