@@ -1,7 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useState } from "react";
 import { TasksGrid } from "../TasksGrid";
 import { ButtonArea } from "../ButtonArea";
+import { Button } from "../Button";
+import { faCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { Task } from "../Task";
 
 const AppContainer = styled.div`
     height: 80vh;
@@ -21,8 +24,18 @@ const AppContainer = styled.div`
 function App() {
     return (
         <AppContainer id="app">
-            <TasksGrid />
-            <ButtonArea />
+            <TasksGrid>
+                <Task>
+                    <ButtonArea>
+                        <Button icon={faCheck} rounded></Button>
+                        <Button icon={faTrashCan} rounded></Button>
+                    </ButtonArea>
+                </Task>
+            </TasksGrid>
+
+            <ButtonArea>
+                <Button text="Nova"></Button>
+            </ButtonArea>
         </AppContainer>
     );
 }
