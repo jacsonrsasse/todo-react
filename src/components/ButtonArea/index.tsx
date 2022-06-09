@@ -1,8 +1,22 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-export const ButtonArea = styled.div`
+type ButtonAreaProps = {
+    flexDirection?: string;
+    children: React.ReactNode | React.ReactNode[];
+};
+
+const ButtonAreaDesign = styled.div`
     display: flex;
-    gap: 5px;
     justify-content: center;
     align-items: center;
+    flex-direction: ${(props: ButtonAreaProps) => props.flexDirection};
 `;
+
+export function ButtonArea(props: ButtonAreaProps) {
+    return (
+        <ButtonAreaDesign flexDirection={props.flexDirection}>
+            {props.children}
+        </ButtonAreaDesign>
+    );
+}

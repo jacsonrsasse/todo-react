@@ -26,7 +26,7 @@ function App() {
         <AppContainer id="app">
             <TasksGrid>
                 <Task>
-                    <ButtonArea>
+                    <ButtonArea flexDirection="column">
                         <Button icon={faCheck} rounded></Button>
                         <Button icon={faTrashCan} rounded></Button>
                     </ButtonArea>
