@@ -6,6 +6,7 @@ import { Button } from "../Button";
 import { faCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Task } from "../Task";
 import { TaskDateInfo } from "../TaskDateInfo";
+import { TaskInfo } from "../TaskInfo";
 
 const AppContainer = styled.div`
     height: 80vh;
@@ -27,9 +28,14 @@ function App() {
         <AppContainer id="app">
             <TasksGrid>
                 <Task>
-                    <div>
+                    {/* <div>
                         <TaskDateInfo text="Teste" />
-                    </div>
+                    </div> */}
+                    <TaskInfo
+                        title="teste"
+                        description="bla bla bla"
+                        createdAt="09/06/2022"
+                    />
                     <ButtonArea flexDirection="column">
                         <Button icon={faCheck} rounded></Button>
                         <Button icon={faTrashCan} rounded></Button>
