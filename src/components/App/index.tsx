@@ -5,6 +5,7 @@ import { ButtonArea } from "../ButtonArea";
 import { Button } from "../Button";
 import { faCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Task } from "../Task";
+import { TaskDateInfo } from "../TaskDateInfo";
 
 const AppContainer = styled.div`
     height: 80vh;
@@ -26,6 +27,9 @@ function App() {
         <AppContainer id="app">
             <TasksGrid>
                 <Task>
+                    <div>
+                        <TaskDateInfo text="Teste" />
+                    </div>
                     <ButtonArea flexDirection="column">
                         <Button icon={faCheck} rounded></Button>
                         <Button icon={faTrashCan} rounded></Button>

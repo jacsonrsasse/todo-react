@@ -6,4 +6,6 @@ export const Task = styled.div`
     background-color: #fff;
     border-radius: 8px;
     flex: 1 0 6rem;
+    display: grid;
+    grid-template-columns: 1fr 60px;
 `;
