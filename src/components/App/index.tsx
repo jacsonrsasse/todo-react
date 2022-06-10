@@ -1,11 +1,8 @@
 import styled, { css } from "styled-components";
-import { useState } from "react";
 import { TasksGrid } from "../TasksGrid";
 import { ButtonArea } from "../ButtonArea";
 import { Button } from "../Button";
-import { faCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Task } from "../Task";
-import { TaskInfo } from "../TaskInfo";
 
 const AppContainer = styled.div`
     height: 80vh;
@@ -22,29 +19,34 @@ const AppContainer = styled.div`
     background-color: ${(props) => props.theme.corSistemaBase9};
 `;
 
+const dados = [
+    {
+        key: 1,
+        title: "teste",
+        description: "teste",
+        createdAt: "xx/xx/xxxx",
+    },
+    {
+        key: 2,
+        title: "teste",
+        description: "teste",
+        createdAt: "xx/xx/xxxx",
+    },
+    {
+        key: 3,
+        title: "teste",
+        description: "teste",
+        createdAt: "xx/xx/xxxx",
+    },
+];
+
 function App() {
     return (
         <AppContainer id="app">
             <TasksGrid>
-                <Task>
-                    <TaskInfo
-                        title="teste"
-                        description="bla bla bla"
-                        createdAt="09/06/2022"
-                    />
-                    <ButtonArea flexDirection="column">
-                        <Button
-                            icon={faCheck}
-                            iconColor="#01c501"
-                            rounded
-                        ></Button>
-                        <Button
-                            icon={faTrashCan}
-                            iconColor="red"
-                            rounded
-                        ></Button>
-                    </ButtonArea>
-                </Task>
+                {dados.map((info) => (
+                    <Task key={info.key} taskInfo={info} />
+                ))}
             </TasksGrid>
 
             <ButtonArea>

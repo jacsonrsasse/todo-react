@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface TaskInfoProps {
+export interface TaskInfoProps {
     title: string;
     description: string;
     createdAt: string;
