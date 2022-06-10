@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import App from "./components/App/";
+import App from "./templates/App";
 
 const theme = {
     corSistemaBase1: "#7d838f",
