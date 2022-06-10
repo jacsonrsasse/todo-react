@@ -1,17 +1,16 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, ThemeProps } from "styled-components";
 
-export type ButtonProps = {
+export interface ButtonProps {
     text?: string;
     icon?: IconDefinition;
+    iconColor?: string;
     rounded?: boolean;
-};
+}
 
 const ButtonDesing = styled.button`
     padding: 0.5rem 0;
-    margin: 0.5rem 0%;
     border-radius: 3px;
     width: 6rem;
     background-color: transparent;
@@ -30,18 +29,40 @@ const ButtonDesing = styled.button`
     ${(props: ButtonProps) =>
         props.rounded &&
         css`
-            width: 2rem;
-            height: 2rem;
+            width: 2.2rem;
+            height: 2.2rem;
             border-radius: 50%;
+
+            ${(props: ButtonProps) =>
+                props.iconColor &&
+                css`
+                    border-color: transparent;
+
+                    &:hover {
+                        border-color: ${(props: ButtonProps) =>
+                            props.iconColor};
+                        border-width: 2px;
+                    }
+
+                    &:active {
+                        background-color: transparent;
+                        box-shadow: inset 0 0 10px
+                            ${(props: ButtonProps) => props.iconColor};
+                    }
+                `}
         `}
 `;
 
 export function Button(props: ButtonProps) {
-    const [rounded, setRounded] = useState(props.rounded);
-
     return (
-        <ButtonDesing rounded={rounded}>
-            {props.icon && <FontAwesomeIcon icon={props.icon} />}
+        <ButtonDesing rounded={props.rounded} iconColor={props.iconColor}>
+            {props.icon && (
+                <FontAwesomeIcon
+                    icon={props.icon}
+                    color={props.iconColor}
+                    size="lg"
+                />
+            )}
             {props.text && !props.rounded ? props.text : ""}
         </ButtonDesing>
     );

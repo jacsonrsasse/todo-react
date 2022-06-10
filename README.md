@@ -13,8 +13,9 @@ As funcionalidades previstas para o projeto já estão prontas em um outro proje
 ##### CHECK-LIST
 
 -   [x] Criar o projeto
--   [ ] Criar os componentes front-end e o visual da aplicação
+-   [x] Criar os componentes front-end e o visual da aplicação
 -   [ ] Criar a funcionalidade para adicionar uma nova tarefa à lista
 -   [ ] Criar a funcionalidade para marcar uma tarefa como concluída, podendo também desmarcar ela como concluída
 -   [ ] Criar a funcionalidade para remover uma tarefa
 -   [ ] Criar a integração com o IndexedDB do navegador, permitindo assim o armazenamento das tarefas e seus estados
+-   [ ] Melhorar o visual da aplicação, disponibilizando outros temas. Trabalhar com o themes do styled-components.

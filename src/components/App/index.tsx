@@ -33,14 +33,22 @@ function App() {
                         createdAt="09/06/2022"
                     />
                     <ButtonArea flexDirection="column">
-                        <Button icon={faCheck} rounded></Button>
-                        <Button icon={faTrashCan} rounded></Button>
+                        <Button
+                            icon={faCheck}
+                            iconColor="#01c501"
+                            rounded
+                        ></Button>
+                        <Button
+                            icon={faTrashCan}
+                            iconColor="red"
+                            rounded
+                        ></Button>
                     </ButtonArea>
                 </Task>
             </TasksGrid>
 
             <ButtonArea>
-                <Button text="Nova"></Button>
+                <Button text="Nova Tarefa" />
             </ButtonArea>
         </AppContainer>
     );

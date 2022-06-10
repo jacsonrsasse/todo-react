@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 type ButtonAreaProps = {
     flexDirection?: string;
@@ -10,7 +10,13 @@ const ButtonAreaDesign = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: ${(props: ButtonAreaProps) => props.flexDirection};
+
+    ${(props: ButtonAreaProps) =>
+        props.flexDirection &&
+        css`
+            justify-content: space-around;
+            flex-direction: ${(props: ButtonAreaProps) => props.flexDirection};
+        `}
 `;
 
 export function ButtonArea(props: ButtonAreaProps) {
