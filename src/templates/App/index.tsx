@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { TasksGrid } from "../TasksGrid";
-import { ButtonArea } from "../ButtonArea";
-import { Button } from "../Button";
-import { Task } from "../Task";
+import { TasksGrid } from "../../components/TasksGrid";
+import { ButtonArea } from "../../components/ButtonArea";
+import { Button } from "../../components/Button";
+import { Task } from "../../components/Task";
 
 const AppContainer = styled.div`
     height: 80vh;
