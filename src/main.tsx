@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import App from "./templates/App";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import App from './templates/App';
 
 const theme = {
-    corSistemaBase1: "#7d838f",
-    corSistemaBase2: "#9ba0a9",
-    corSistemaBase3: "#bcbfc6",
-    corSistemaBase4: "#aab0b6",
-    corSistemaBase5: "#d7d8da",
-    corSistemaBase6: "#fefeff",
-    corSistemaBase7: "#b5b5b5",
-    corSistemaBase8: "#dadada",
-    corSistemaBase9: "#ffffff",
+  corSistemaBase1: '#7d838f',
+  corSistemaBase2: '#9ba0a9',
+  corSistemaBase3: '#bcbfc6',
+  corSistemaBase4: '#aab0b6',
+  corSistemaBase5: '#d7d8da',
+  corSistemaBase6: '#fefeff',
+  corSistemaBase7: '#b5b5b5',
+  corSistemaBase8: '#dadada',
+  corSistemaBase9: '#ffffff',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -32,11 +32,14 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const root = document.getElementById('root');
+if (root) {
+  ReactDOM.createRoot(root).render(
     <React.StrictMode>
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-            <App />
-        </ThemeProvider>
-    </React.StrictMode>
-);
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </React.StrictMode>,
+  );
+}
