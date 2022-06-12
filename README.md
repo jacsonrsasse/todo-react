@@ -15,8 +15,8 @@ As funcionalidades previstas para o projeto já estão prontas em um outro proje
 - [x] Criar o projeto
 - [x] Criar os componentes front-end e o visual da aplicação
 - [x] Criar a funcionalidade para adicionar uma nova tarefa à lista
-- [ ] Criar a funcionalidade para marcar uma tarefa como concluída, podendo também desmarcar ela como concluída
-- [ ] Criar a funcionalidade para remover uma tarefa
+- [x] Criar a funcionalidade para marcar uma tarefa como concluída, podendo também desmarcar ela como concluída
+- [x] Criar a funcionalidade para remover uma tarefa
 - [ ] Criar a integração com o IndexedDB do navegador, permitindo assim o armazenamento das tarefas e seus estados
 - [ ] Melhorar o visual da aplicação, disponibilizando outros temas. Trabalhar com o themes do styled-components.
 - [ ] Melhorar a inclusão de tarefas, criar uma tela de inclusão ao invés de utilizar o promp do navegador.

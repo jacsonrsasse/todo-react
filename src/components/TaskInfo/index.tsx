@@ -16,6 +16,10 @@ const TaskInfoDesign = styled.div`
 
   h3 {
     text-transform: uppercase;
+
+    &.completed {
+      text-decoration: line-through;
+    }
   }
 
   p {
@@ -33,7 +37,7 @@ const TaskInfoDesign = styled.div`
 export function TaskInfo({ title, description, createdAt, updatedAt }: TaskInfoProps) {
   return (
     <TaskInfoDesign>
-      <h3>{title}</h3>
+      <h3 className={updatedAt ? 'completed' : ''}>{title}</h3>
       <p>{description}</p>
       <span>{updatedAt ? 'Atualizado em: ' + updatedAt : 'Criado em: ' + createdAt}</span>
     </TaskInfoDesign>

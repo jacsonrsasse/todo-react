@@ -21,4 +21,3 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {}
 }
-

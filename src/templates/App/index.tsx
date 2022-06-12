@@ -26,25 +26,28 @@ const tasksMock = [
     title: 'teste',
     description: 'teste',
     createdAt: 'xx/xx/xxxx',
+    updatedAt: '',
   },
   {
     key: 2,
     title: 'teste',
     description: 'teste',
     createdAt: 'xx/xx/xxxx',
+    updatedAt: '',
   },
   {
     key: 3,
     title: 'teste',
     description: 'teste',
     createdAt: 'xx/xx/xxxx',
+    updatedAt: '',
   },
 ];
 
 function App() {
   const [tasks, setTasks] = useState(tasksMock);
 
-  const handlerTasks = (key: number) => {
+  const handlerDeleteTask = (key: number) => {
     const tasksUpdated = tasks.filter((task) => task.key !== key);
     setTasks(tasksUpdated);
   };
@@ -63,6 +66,7 @@ function App() {
       title: title,
       description: description,
       createdAt: new Date().toLocaleString('pt-br'),
+      updatedAt: '',
     };
     setTasks([...tasks, task]);
   };
@@ -71,7 +75,7 @@ function App() {
     <AppContainer id="app">
       <TasksGrid>
         {tasks.map((info) => (
-          <Task key={info.key} taskInfo={info} handlerTasks={handlerTasks} />
+          <Task key={info.key} taskInfo={info} handlerDeleteTask={handlerDeleteTask} />
         ))}
       </TasksGrid>
 
