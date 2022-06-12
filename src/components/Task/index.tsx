@@ -27,8 +27,8 @@ export function Task(props: TaskProps) {
   const [iconColor, setIconColor] = useState('#01c501');
 
   const handleClickCheckButton = () => {
-    const btnIcon = isChecked ? faXmark : faCheck;
-    const iconColor = isChecked ? '#d6b703' : '#01c501';
+    const btnIcon = isChecked ? faCheck : faXmark;
+    const iconColor = isChecked ? '#01c501' : '#d6b703';
     setIsChecked(!isChecked);
     setIconCheck(btnIcon);
     setIconColor(iconColor);
