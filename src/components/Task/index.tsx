@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
 import { faCheck, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { Button } from '../Button';
 import { ButtonArea } from '../ButtonArea';
 import { TaskInfo, TaskInfoProps } from '../TaskInfo';
 
+interface TaskInfoPropsWithKey extends TaskInfoProps {
+  key: number;
+}
+
 interface TaskProps {
-  handlerDeleteTask: (key: number) => void;
-  taskInfo: TaskInfoProps;
+  handleUpdateTask: (key: number, isChecked: boolean) => void;
+  handleDeleteTask: (key: number) => void;
+  taskInfo: TaskInfoPropsWithKey;
 }
 
 const TaskDesign = styled.div`
@@ -21,34 +25,22 @@ const TaskDesign = styled.div`
 `;
 
 export function Task(props: TaskProps) {
-  const { key, title, description, createdAt } = props.taskInfo;
-  const [updatedAt, setUpdatedAt] = useState(props.taskInfo.updatedAt);
-  const [isChecked, setIsChecked] = useState(false);
-  const [iconCheck, setIconCheck] = useState(faCheck);
-  const [iconColor, setIconColor] = useState('#01c501');
-
-  const handleClickCheckButton = () => {
-    const btnIcon = isChecked ? faCheck : faXmark;
-    const iconColor = isChecked ? '#01c501' : '#d6b703';
-    const updatedAtInfo = updatedAt ? '' : new Date().toLocaleString('pt-br');
-    setIsChecked(!isChecked);
-    setIconCheck(btnIcon);
-    setIconColor(iconColor);
-    setUpdatedAt(updatedAtInfo);
-  };
-
-  const handleClickDeleteButton = () => {
-    if (key) {
-      props.handlerDeleteTask(key);
-    }
-  };
+  const { key, title, description, createdAt, updatedAt } = props.taskInfo;
+  const isChecked = !updatedAt;
+  const iconColor = isChecked ? '#01c501' : '#d6b703';
+  const iconCheckBtn = isChecked ? faCheck : faXmark;
 
   return (
     <TaskDesign id={`${key}`}>
       <TaskInfo title={title} description={description} createdAt={createdAt} updatedAt={updatedAt} />
       <ButtonArea flexDirection="column">
-        <Button icon={iconCheck} iconColor={iconColor} rounded onClick={handleClickCheckButton}></Button>
-        <Button icon={faTrashCan} iconColor="red" rounded onClick={handleClickDeleteButton}></Button>
+        <Button
+          icon={iconCheckBtn}
+          iconColor={iconColor}
+          rounded
+          onClick={() => props.handleUpdateTask(key, isChecked)}
+        ></Button>
+        <Button icon={faTrashCan} iconColor="red" rounded onClick={() => props.handleDeleteTask(key)}></Button>
       </ButtonArea>
     </TaskDesign>
   );

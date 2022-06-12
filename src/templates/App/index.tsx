@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { TasksGrid } from '../../components/TasksGrid';
 import { ButtonArea } from '../../components/ButtonArea';
@@ -47,9 +47,17 @@ const tasksMock = [
 function App() {
   const [tasks, setTasks] = useState(tasksMock);
 
-  const handlerDeleteTask = (key: number) => {
+  const handleDeleteTask = (key: number) => {
     const tasksUpdated = tasks.filter((task) => task.key !== key);
+    console.log(tasksUpdated);
     setTasks(tasksUpdated);
+  };
+
+  const handleUpdateTask = (key: number, isChecked: boolean) => {
+    const newTasks = tasks.map((task) =>
+      task.key === key ? { ...task, updatedAt: isChecked ? new Date().toLocaleString() : '' } : task,
+    );
+    setTasks(newTasks);
   };
 
   const handlerAddNewTask = () => {
@@ -75,7 +83,12 @@ function App() {
     <AppContainer id="app">
       <TasksGrid>
         {tasks.map((info) => (
-          <Task key={info.key} taskInfo={info} handlerDeleteTask={handlerDeleteTask} />
+          <Task
+            key={info.key}
+            taskInfo={info}
+            handleDeleteTask={handleDeleteTask}
+            handleUpdateTask={handleUpdateTask}
+          />
         ))}
       </TasksGrid>
 
