@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TasksGrid } from '../../components/TasksGrid';
 import { ButtonArea } from '../../components/ButtonArea';
@@ -20,7 +20,7 @@ const AppContainer = styled.div`
   background-color: ${(props) => props.theme.corSistemaBase9};
 `;
 
-const dados = [
+const tasksMock = [
   {
     key: 1,
     title: 'teste',
@@ -42,16 +42,23 @@ const dados = [
 ];
 
 function App() {
+  const [tasks, setTasks] = useState(tasksMock);
+
+  const handlerTasks = (key: number) => {
+    const tasksUpdated = tasks.filter((task) => task.key !== key);
+    setTasks(tasksUpdated);
+  };
+
   return (
     <AppContainer id="app">
       <TasksGrid>
-        {dados.map((info) => (
-          <Task key={info.key} taskInfo={info} />
+        {tasks.map((info) => (
+          <Task key={info.key} taskInfo={info} handlerTasks={handlerTasks} />
         ))}
       </TasksGrid>
 
       <ButtonArea>
-        <Button text="Nova Tarefa" />
+        <Button text="Nova Tarefa" onClick={() => console.log('click')} />
       </ButtonArea>
     </AppContainer>
   );

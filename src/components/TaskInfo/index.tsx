@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export interface TaskInfoProps {
+  key?: number;
   title: string;
   description: string;
   createdAt: string;

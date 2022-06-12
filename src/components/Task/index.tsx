@@ -1,11 +1,12 @@
-import React from 'react';
-import { faCheck, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import { faCheck, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { Button } from '../Button';
 import { ButtonArea } from '../ButtonArea';
 import { TaskInfo, TaskInfoProps } from '../TaskInfo';
 
 interface TaskProps {
+  handlerTasks: (key: number) => void;
   taskInfo: TaskInfoProps;
 }
 
@@ -20,13 +21,31 @@ const TaskDesign = styled.div`
 `;
 
 export function Task(props: TaskProps) {
-  const { title, description, createdAt, updatedAt } = props.taskInfo;
+  const { key, title, description, createdAt, updatedAt } = props.taskInfo;
+  const [isChecked, setIsChecked] = useState(false);
+  const [iconCheck, setIconCheck] = useState(faCheck);
+  const [iconColor, setIconColor] = useState('#01c501');
+
+  const handleClickCheckButton = () => {
+    const btnIcon = isChecked ? faXmark : faCheck;
+    const iconColor = isChecked ? '#d6b703' : '#01c501';
+    setIsChecked(!isChecked);
+    setIconCheck(btnIcon);
+    setIconColor(iconColor);
+  };
+
+  const handleClickDeleteButton = () => {
+    if (key) {
+      props.handlerTasks(key);
+    }
+  };
+
   return (
-    <TaskDesign>
+    <TaskDesign id={`${key}`}>
       <TaskInfo title={title} description={description} createdAt={createdAt} updatedAt={updatedAt} />
       <ButtonArea flexDirection="column">
-        <Button icon={faCheck} iconColor="#01c501" rounded></Button>
-        <Button icon={faTrashCan} iconColor="red" rounded></Button>
+        <Button icon={iconCheck} iconColor={iconColor} rounded onClick={handleClickCheckButton}></Button>
+        <Button icon={faTrashCan} iconColor="red" rounded onClick={handleClickDeleteButton}></Button>
       </ButtonArea>
     </TaskDesign>
   );

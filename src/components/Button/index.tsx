@@ -8,6 +8,7 @@ export interface ButtonProps {
   icon?: IconDefinition;
   iconColor?: string;
   rounded?: boolean;
+  onClick: () => void;
 }
 
 const ButtonDesing = styled.button`
@@ -54,7 +55,7 @@ const ButtonDesing = styled.button`
 
 export function Button(props: ButtonProps) {
   return (
-    <ButtonDesing rounded={props.rounded} iconColor={props.iconColor}>
+    <ButtonDesing rounded={props.rounded} iconColor={props.iconColor} onClick={props.onClick}>
       {props.icon && <FontAwesomeIcon icon={props.icon} color={props.iconColor} size="lg" />}
       {props.text && !props.rounded ? props.text : ''}
     </ButtonDesing>
