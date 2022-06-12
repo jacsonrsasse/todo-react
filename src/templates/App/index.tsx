@@ -49,6 +49,24 @@ function App() {
     setTasks(tasksUpdated);
   };
 
+  const handlerAddNewTask = () => {
+    const title = prompt('Título da Tarefa:');
+    if (!title) {
+      return;
+    }
+    const description = prompt('Descrição da Tarefa:');
+    if (!description) {
+      return;
+    }
+    const task = {
+      key: tasks.reduce((prev, curr) => (curr.key < prev ? prev : curr.key), 0) + 1,
+      title: title,
+      description: description,
+      createdAt: new Date().toLocaleString('pt-br'),
+    };
+    setTasks([...tasks, task]);
+  };
+
   return (
     <AppContainer id="app">
       <TasksGrid>
@@ -58,7 +76,7 @@ function App() {
       </TasksGrid>
 
       <ButtonArea>
-        <Button text="Nova Tarefa" onClick={() => console.log('click')} />
+        <Button text="Nova Tarefa" onClick={handlerAddNewTask} />
       </ButtonArea>
     </AppContainer>
   );
