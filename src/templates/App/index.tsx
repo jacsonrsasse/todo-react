@@ -49,7 +49,6 @@ function App() {
 
   const handleDeleteTask = (key: number) => {
     const tasksUpdated = tasks.filter((task) => task.key !== key);
-    console.log(tasksUpdated);
     setTasks(tasksUpdated);
   };
 
