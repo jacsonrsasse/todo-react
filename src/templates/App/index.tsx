@@ -4,8 +4,8 @@ import { TasksGrid } from '../../components/TasksGrid';
 import { ButtonArea } from '../../components/ButtonArea';
 import { Button } from '../../components/Button';
 import { Task } from '../../components/Task';
-import IndexedDBTasksHandler from '../../services/IndexedDBTasksHandler';
-import ITask from '../../services/ITask';
+import IndexedDBTasksHandler from '../../utils/IndexedDBTasksHandler';
+import ITask from '../../utils/ITask';
 
 const AppContainer = styled.div`
   height: 80vh;

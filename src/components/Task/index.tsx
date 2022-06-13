@@ -1,6 +1,6 @@
 import { faCheck, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import ITask from '../../services/ITask';
+import ITask from '../../utils/ITask';
 import { Button } from '../Button';
 import { ButtonArea } from '../ButtonArea';
 import { TaskInfo } from '../TaskInfo';

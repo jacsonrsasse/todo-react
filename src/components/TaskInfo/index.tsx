@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ITask from '../../services/ITask';
+import ITask from '../../utils/ITask';
 
 const TaskInfoDesign = styled.div`
   padding: 0.3rem;
