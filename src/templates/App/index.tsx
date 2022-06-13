@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { TasksGrid } from '../../components/TasksGrid';
 import { ButtonArea } from '../../components/ButtonArea';
 import { Button } from '../../components/Button';
 import { Task } from '../../components/Task';
+import IndexedDBTasksHandler from '../../services/IndexedDBTasksHandler';
+import ITask from '../../services/ITask';
 
 const AppContainer = styled.div`
   height: 80vh;
@@ -20,42 +22,74 @@ const AppContainer = styled.div`
   background-color: ${(props) => props.theme.corSistemaBase9};
 `;
 
-const tasksMock = [
-  {
-    key: 1,
-    title: 'teste',
-    description: 'teste',
-    createdAt: 'xx/xx/xxxx',
-    updatedAt: '',
-  },
-  {
-    key: 2,
-    title: 'teste',
-    description: 'teste',
-    createdAt: 'xx/xx/xxxx',
-    updatedAt: '',
-  },
-  {
-    key: 3,
-    title: 'teste',
-    description: 'teste',
-    createdAt: 'xx/xx/xxxx',
-    updatedAt: '',
-  },
-];
+enum Operacao {
+  nenhuma = 0,
+  inclusao = 1,
+  alteracao = 2,
+  exclusao = 3,
+}
 
 function App() {
-  const [tasks, setTasks] = useState(tasksMock);
+  const [operacao, setOperacao] = useState(Operacao.nenhuma);
+  const [task, setTask] = useState({});
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    console.log('didMount');
+    const runDb = async () => {
+      const indexedDb = new IndexedDBTasksHandler();
+      await indexedDb.openDB();
+      const tasks = await indexedDb.getAllTasks();
+      setTasks(tasks);
+    };
+    runDb();
+  }, []);
+
+  useEffect(() => {
+    const runDb = async () => {
+      const indexedDb = new IndexedDBTasksHandler();
+      await indexedDb.openDB();
+
+      const newTask = task as ITask;
+
+      switch (operacao) {
+        case Operacao.inclusao:
+          await indexedDb.addTask(newTask);
+          break;
+        case Operacao.alteracao:
+          await indexedDb.updateTask(newTask);
+          break;
+        case Operacao.exclusao:
+          await indexedDb.deleteTask(newTask.key);
+          break;
+      }
+      setOperacao(Operacao.nenhuma);
+      setTask({});
+    };
+    runDb();
+  }, [tasks]);
+
+  useEffect(() => {
+    return () => {
+      setOperacao(Operacao.nenhuma);
+      setTask({});
+    };
+  }, []);
 
   const handleDeleteTask = (key: number) => {
-    const tasksUpdated = tasks.filter((task) => task.key !== key);
+    const tasksUpdated = tasks.filter((task: ITask) => task.key !== key);
+    setOperacao(Operacao.exclusao);
+    setTask({ key: key });
     setTasks(tasksUpdated);
   };
 
   const handleUpdateTask = (key: number, isChecked: boolean) => {
-    const newTasks = tasks.map((task) =>
+    const newTasks = tasks.map((task: ITask) =>
       task.key === key ? { ...task, updatedAt: isChecked ? new Date().toLocaleString() : '' } : task,
-    );
+    ) as never[];
+    const newTask = newTasks.filter((task: ITask) => task.key === key)[0];
+    setOperacao(Operacao.alteracao);
+    setTask(newTask);
     setTasks(newTasks);
   };
 
@@ -69,19 +103,21 @@ function App() {
       return;
     }
     const task = {
-      key: tasks.reduce((prev, curr) => (curr.key < prev ? prev : curr.key), 0) + 1,
+      key: tasks.reduce((prev, curr: ITask) => (curr.key < prev ? prev : curr.key), 0) + 1,
       title: title,
       description: description,
       createdAt: new Date().toLocaleString('pt-br'),
       updatedAt: '',
     };
-    setTasks([...tasks, task]);
+    setOperacao(Operacao.inclusao);
+    setTask(task);
+    setTasks([...tasks, task] as never[]);
   };
 
   return (
     <AppContainer id="app">
       <TasksGrid>
-        {tasks.map((info) => (
+        {tasks.map((info: ITask) => (
           <Task
             key={info.key}
             taskInfo={info}

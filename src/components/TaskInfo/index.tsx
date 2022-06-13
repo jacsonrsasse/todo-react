@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-export interface TaskInfoProps {
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt?: string;
-}
+import ITask from '../../services/ITask';
 
 const TaskInfoDesign = styled.div`
   padding: 0.3rem;
@@ -33,7 +27,7 @@ const TaskInfoDesign = styled.div`
   }
 `;
 
-export function TaskInfo({ title, description, createdAt, updatedAt }: TaskInfoProps) {
+export function TaskInfo({ title, description, createdAt, updatedAt }: ITask) {
   return (
     <TaskInfoDesign>
       <h3 className={updatedAt ? 'completed' : ''}>{title}</h3>

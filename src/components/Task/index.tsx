@@ -1,17 +1,14 @@
 import { faCheck, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import ITask from '../../services/ITask';
 import { Button } from '../Button';
 import { ButtonArea } from '../ButtonArea';
-import { TaskInfo, TaskInfoProps } from '../TaskInfo';
-
-interface TaskInfoPropsWithKey extends TaskInfoProps {
-  key: number;
-}
+import { TaskInfo } from '../TaskInfo';
 
 interface TaskProps {
   handleUpdateTask: (key: number, isChecked: boolean) => void;
   handleDeleteTask: (key: number) => void;
-  taskInfo: TaskInfoPropsWithKey;
+  taskInfo: ITask;
 }
 
 const TaskDesign = styled.div`
@@ -32,7 +29,7 @@ export function Task(props: TaskProps) {
 
   return (
     <TaskDesign id={`${key}`}>
-      <TaskInfo title={title} description={description} createdAt={createdAt} updatedAt={updatedAt} />
+      <TaskInfo key={key} title={title} description={description} createdAt={createdAt} updatedAt={updatedAt} />
       <ButtonArea flexDirection="column">
         <Button
           icon={iconCheckBtn}
