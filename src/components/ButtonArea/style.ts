@@ -1,12 +1,7 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
+import { ButtonAreaProps } from '.';
 
-export interface ButtonAreaProps {
-    flexDirection?: string;
-    children: React.ReactNode | React.ReactNode[];
-}
-
-const ButtonAreaDesign = styled.div`
+export const ButtonAreaDesign = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +13,3 @@ const ButtonAreaDesign = styled.div`
             flex-direction: ${(props: ButtonAreaProps) => props.flexDirection};
         `}
 `;
-
-export function ButtonArea(props: ButtonAreaProps) {
-    return <ButtonAreaDesign flexDirection={props.flexDirection}>{props.children}</ButtonAreaDesign>;
-}
