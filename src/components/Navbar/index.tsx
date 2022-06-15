@@ -24,7 +24,7 @@ const NavbarDesign = styled.nav`
         display: block;
         width: 60px;
         height: 31px;
-        border: 2px solid #4672fe;
+        border: 2px solid #fff;
         border-radius: 30px;
         position: relative;
         user-select: none;
@@ -43,7 +43,7 @@ const NavbarDesign = styled.nav`
         display: inline-block;
         width: 25px;
         height: 25px;
-        background-color: #4672fe;
+        background-color: #fff;
         border-radius: 50%;
         left: 1px;
         z-index: 10;
@@ -69,8 +69,8 @@ export function Navbar({ onChangeSwitch }: NavbarProps) {
             <label htmlFor="checkboxTheme" className="toggler">
                 <input type="checkbox" id="checkboxTheme" onChange={onChangeSwitch} />
                 <span className="ball"></span>
-                <FontAwesomeIcon icon={faSun} className="sun" />
-                <FontAwesomeIcon icon={faMoon} className="moon" />
+                <FontAwesomeIcon icon={faSun} className="sun" color="#fff" />
+                <FontAwesomeIcon icon={faMoon} className="moon" color="#fff" />
             </label>
         </NavbarDesign>
     );

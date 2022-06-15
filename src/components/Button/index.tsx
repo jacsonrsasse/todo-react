@@ -15,16 +15,16 @@ const ButtonDesing = styled.button`
     border-radius: 3px;
     width: 6rem;
     background-color: transparent;
-    color: ${(props) => props.theme.corSistemaBase1};
-    border: 2px solid ${(props) => props.theme.corSistemaBase1};
+    color: ${(props) => props.theme.background};
+    border: 2px solid ${(props) => props.theme.background};
     cursor: pointer;
     display: flex;
     justify-content: center;
     gap: 10px;
 
     &:active {
-        background-color: ${(props) => props.theme.corSistemaBase1};
-        color: ${(props) => props.theme.corSistemaBase9};
+        background-color: ${(props) => props.theme.background};
+        color: ${(props) => props.theme.buttonActiveText};
     }
 
     ${(props: ButtonProps) =>
@@ -38,6 +38,7 @@ const ButtonDesing = styled.button`
                 props.iconColor &&
                 css`
                     border-color: transparent;
+                    transition: border 0.2s ease-in-out;
 
                     &:hover {
                         border-color: ${(props: ButtonProps) => props.iconColor};

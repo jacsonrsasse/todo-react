@@ -4,31 +4,29 @@ import { Navbar } from '../../components/Navbar';
 import App from '../App';
 
 const theme = {
-    corSistemaBase1: '#7d838f',
-    corSistemaBase2: '#9ba0a9',
-    corSistemaBase3: '#bcbfc6',
-    corSistemaBase4: '#aab0b6',
-    corSistemaBase5: '#d7d8da',
-    corSistemaBase6: '#fefeff',
-    corSistemaBase7: '#b5b5b5',
-    corSistemaBase8: '#dadada',
-    corSistemaBase9: '#ffffff',
+    // corSistemaBase1: '#7d838f',
+    // corSistemaBase2: '#9ba0a9',
+    // corSistemaBase3: '#bcbfc6',
+    // corSistemaBase4: '#aab0b6',
+    // corSistemaBase5: '#d7d8da',
+    // corSistemaBase6: '#fefeff',
+    // corSistemaBase7: '#b5b5b5',
+    // corSistemaBase8: '#dadada',
+    // corSistemaBase9: '#ffffff',
 
     darkTheme: {
-        corSistemaBase1: '#595959',
-        corSistemaBase2: '#63656A',
-        corSistemaBase3: '#68727A',
-        corSistemaBase4: '#6A8187',
-        corSistemaBase5: '#6F908F',
-        corSistemaBase6: '#7A9E92',
+        background: '#3A3845',
+        appBackground: '#F7CCAC',
+        title: '#C69B7B',
+        buttonText: '#3A3845',
+        buttonActiveText: '#ffffff',
     },
     lightTheme: {
-        corSistemaBase1: '#E2E2E2',
-        corSistemaBase2: '#C4C6CC',
-        corSistemaBase3: '#A1ADB5',
-        corSistemaBase4: '#7D949B',
-        corSistemaBase5: '#5D7D7C',
-        corSistemaBase6: '#43655A',
+        background: '#7d838f',
+        appBackground: '#dadada',
+        title: '#9ba0a9',
+        buttonText: '#7d838f',
+        buttonActiveText: '#ffffff',
     },
 };
 
@@ -45,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: ${(props: any) => props.theme.corSistemaBase1};
+        background-color: ${(props: any) => props.theme.background};
     }
 `;
 
@@ -59,7 +57,7 @@ export function Page() {
     return (
         <div>
             <Navbar onChangeSwitch={handleSwitchTheme} />
-            <ThemeProvider theme={isDarkTheme ? theme.lightTheme : theme.darkTheme}>
+            <ThemeProvider theme={isDarkTheme ? theme.darkTheme : theme.lightTheme}>
                 <GlobalStyle />
                 <App />
             </ThemeProvider>

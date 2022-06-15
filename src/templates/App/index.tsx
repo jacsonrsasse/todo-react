@@ -19,7 +19,7 @@ const AppContainer = styled.div`
     gap: 5px;
     padding: 20px;
     padding-bottom: 5px;
-    background-color: ${(props) => props.theme.corSistemaBase9};
+    background-color: ${(props) => props.theme.appBackground};
 `;
 
 enum Operacao {
