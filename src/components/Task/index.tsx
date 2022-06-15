@@ -14,7 +14,7 @@ interface TaskProps {
 const TaskDesign = styled.div`
     max-height: 6rem;
     width: 100%;
-    background-color: #fff;
+    background-color: ${(props) => props.theme.appBackground};
     border-radius: 8px;
     flex: 1 0 6rem;
     display: grid;
@@ -24,7 +24,7 @@ const TaskDesign = styled.div`
 export function Task(props: TaskProps) {
     const { key, title, description, createdAt, updatedAt } = props.taskInfo;
     const isChecked = !updatedAt;
-    const iconColor = isChecked ? '#01c501' : '#d6b703';
+    const iconColor = isChecked ? '#088f08' : '#a78f07';
     const iconCheckBtn = isChecked ? faCheck : faXmark;
 
     return (
@@ -37,7 +37,12 @@ export function Task(props: TaskProps) {
                     rounded
                     onClick={() => props.handleUpdateTask(key, isChecked)}
                 ></Button>
-                <Button icon={faTrashCan} iconColor="red" rounded onClick={() => props.handleDeleteTask(key)}></Button>
+                <Button
+                    icon={faTrashCan}
+                    iconColor="#e71c1c"
+                    rounded
+                    onClick={() => props.handleDeleteTask(key)}
+                ></Button>
             </ButtonArea>
         </TaskDesign>
     );

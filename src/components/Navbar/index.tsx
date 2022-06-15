@@ -1,6 +1,6 @@
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 const NavbarDesign = styled.nav`
     position: fixed;
@@ -24,7 +24,7 @@ const NavbarDesign = styled.nav`
         display: block;
         width: 60px;
         height: 31px;
-        border: 2px solid #fff;
+        border: 2px solid ${(props) => props.theme.appBackground};
         border-radius: 30px;
         position: relative;
         user-select: none;
@@ -43,7 +43,7 @@ const NavbarDesign = styled.nav`
         display: inline-block;
         width: 25px;
         height: 25px;
-        background-color: #fff;
+        background-color: ${(props) => props.theme.appBackground};
         border-radius: 50%;
         left: 1px;
         z-index: 10;
@@ -64,13 +64,14 @@ interface NavbarProps {
 }
 
 export function Navbar({ onChangeSwitch }: NavbarProps) {
+    const theme = useTheme();
     return (
         <NavbarDesign>
             <label htmlFor="checkboxTheme" className="toggler">
                 <input type="checkbox" id="checkboxTheme" onChange={onChangeSwitch} />
                 <span className="ball"></span>
-                <FontAwesomeIcon icon={faSun} className="sun" color="#fff" />
-                <FontAwesomeIcon icon={faMoon} className="moon" color="#fff" />
+                <FontAwesomeIcon icon={faSun} className="sun" color={theme.appBackground} />
+                <FontAwesomeIcon icon={faMoon} className="moon" color={theme.appBackground} />
             </label>
         </NavbarDesign>
     );

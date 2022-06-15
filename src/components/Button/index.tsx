@@ -15,8 +15,8 @@ const ButtonDesing = styled.button`
     border-radius: 3px;
     width: 6rem;
     background-color: transparent;
-    color: ${(props) => props.theme.background};
-    border: 2px solid ${(props) => props.theme.background};
+    color: ${(props) => props.theme.buttonText};
+    border: 2px solid ${(props) => props.theme.buttonBorderColor};
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -24,6 +24,7 @@ const ButtonDesing = styled.button`
 
     &:active {
         background-color: ${(props) => props.theme.background};
+        border-color: ${(props) => props.theme.background};
         color: ${(props) => props.theme.buttonActiveText};
     }
 

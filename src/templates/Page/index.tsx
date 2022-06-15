@@ -16,16 +16,17 @@ const theme = {
 
     darkTheme: {
         background: '#3A3845',
-        appBackground: '#F7CCAC',
-        title: '#C69B7B',
-        buttonText: '#3A3845',
+        // appBackground: '#F7CCAC',
+        appBackground: '#dadada',
+        buttonText: '#3a393b',
+        buttonBorderColor: '#3a393b',
         buttonActiveText: '#ffffff',
     },
     lightTheme: {
         background: '#7d838f',
         appBackground: '#dadada',
-        title: '#9ba0a9',
-        buttonText: '#7d838f',
+        buttonText: '#3a393b',
+        buttonBorderColor: '#3a393b',
         buttonActiveText: '#ffffff',
     },
 };
@@ -56,8 +57,8 @@ export function Page() {
 
     return (
         <div>
-            <Navbar onChangeSwitch={handleSwitchTheme} />
             <ThemeProvider theme={isDarkTheme ? theme.darkTheme : theme.lightTheme}>
+                <Navbar onChangeSwitch={handleSwitchTheme} />
                 <GlobalStyle />
                 <App />
             </ThemeProvider>

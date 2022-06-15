@@ -23,7 +23,7 @@ const TaskInfoDesign = styled.div`
         font-size: 0.7rem;
         font-style: italic;
         text-align: end;
-        color: ${(props) => props.theme.corSistemaBase2};
+        color: black;
     }
 `;
 
