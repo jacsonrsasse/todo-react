@@ -1,7 +1,6 @@
-import styled, { css } from 'styled-components';
-import { ButtonProps } from '.';
+import styled from 'styled-components';
 
-export const ButtonDesing = styled.button`
+const ButtonDesign = styled.button`
     padding: 0.5rem 0;
     border-radius: 3px;
     width: 6rem;
@@ -18,29 +17,6 @@ export const ButtonDesing = styled.button`
         border-color: ${(props) => props.theme.background};
         color: ${(props) => props.theme.buttonActiveText};
     }
-
-    ${(props: ButtonProps) =>
-        props.rounded &&
-        css`
-            width: 2.2rem;
-            height: 2.2rem;
-            border-radius: 50%;
-
-            ${(props: ButtonProps) =>
-                props.iconColor &&
-                css`
-                    border-color: transparent;
-                    transition: border 0.2s ease-in-out;
-
-                    &:hover {
-                        border-color: ${(props: ButtonProps) => props.iconColor};
-                        border-width: 2px;
-                    }
-
-                    &:active {
-                        background-color: transparent;
-                        box-shadow: inset 0 0 10px ${(props: ButtonProps) => props.iconColor};
-                    }
-                `}
-        `}
 `;
+
+export default ButtonDesign;

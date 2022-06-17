@@ -1,6 +1,6 @@
 import { faCheck, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons';
 import ITask from '../../utils/taks';
-import { Button } from '../Button';
+import { RoundedButton } from '../RoundedButton';
 import { ButtonArea } from '../ButtonArea';
 import { TaskInfo } from '../TaskInfo';
 import { TaskDesign } from './style';
@@ -21,18 +21,16 @@ export function Task(props: TaskProps) {
         <TaskDesign id={`${key}`}>
             <TaskInfo key={key} title={title} description={description} createdAt={createdAt} updatedAt={updatedAt} />
             <ButtonArea flexDirection="column">
-                <Button
+                <RoundedButton
                     icon={iconCheckBtn}
                     iconColor={iconColor}
-                    rounded
                     onClick={() => props.handleUpdateTask(key, isChecked)}
-                ></Button>
-                <Button
+                ></RoundedButton>
+                <RoundedButton
                     icon={faTrashCan}
                     iconColor="#e71c1c"
-                    rounded
                     onClick={() => props.handleDeleteTask(key)}
-                ></Button>
+                ></RoundedButton>
             </ButtonArea>
         </TaskDesign>
     );

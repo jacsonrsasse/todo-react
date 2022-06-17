@@ -1,20 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ButtonDesing } from './style';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import ButtonDesign from './style';
 
-export interface ButtonProps {
-    text?: string;
-    icon?: IconDefinition;
-    iconColor?: string;
-    rounded?: boolean;
+interface ButtonProps {
+    text: string;
     onClick: () => void;
 }
 
-export function Button(props: ButtonProps) {
-    return (
-        <ButtonDesing rounded={props.rounded} iconColor={props.iconColor} onClick={props.onClick}>
-            {props.icon && <FontAwesomeIcon icon={props.icon} color={props.iconColor} size="lg" />}
-            {props.text && !props.rounded ? props.text : ''}
-        </ButtonDesing>
-    );
+export function Button({ text, onClick }: ButtonProps) {
+    return <ButtonDesign onClick={onClick}>{text}</ButtonDesign>;
 }

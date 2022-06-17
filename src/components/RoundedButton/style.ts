@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import ButtonDesign from '../NewButton/style';
+import ButtonDesign from '../Button/style';
 import { RoundedButtonDesignProps } from './RoundedButton';
 
 const RoudedButtonDesign = styled(ButtonDesign)`
