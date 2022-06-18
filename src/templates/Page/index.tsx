@@ -6,7 +6,12 @@ import { GlobalStyle } from './global-style';
 import { theme } from './theme';
 
 export function Page() {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const verifyTime = (): boolean => {
+        const hour = new Date().getHours();
+        return hour > 21 || hour < 6;
+    };
+
+    const [isDarkTheme, setIsDarkTheme] = useState(verifyTime());
 
     const handleSwitchTheme = () => {
         setIsDarkTheme(!isDarkTheme);
@@ -15,7 +20,7 @@ export function Page() {
     return (
         <div>
             <ThemeProvider theme={isDarkTheme ? theme.darkTheme : theme.lightTheme}>
-                <Navbar onChangeSwitch={handleSwitchTheme} />
+                <Navbar onChangeSwitch={handleSwitchTheme} isDarkTheme={isDarkTheme} />
                 <GlobalStyle />
                 <App />
             </ThemeProvider>
