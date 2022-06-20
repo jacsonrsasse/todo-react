@@ -4,6 +4,7 @@ import { TasksGrid } from '../../components/TasksGrid';
 import { ButtonArea } from '../../components/ButtonArea';
 import { Button } from '../../components/Button';
 import { Task } from '../../components/Task';
+import { NewTaskDialog } from '../../components/NewTaskDialog';
 import IndexedDBTasksHandler from '../../utils/IndexedDBTasksHandler';
 import ITask from '../../utils/taks';
 
@@ -18,6 +19,7 @@ export default function App() {
     const [operacao, setOperacao] = useState(Operacao.nenhuma);
     const [task, setTask] = useState({});
     const [tasks, setTasks] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
         console.log('didMount');
@@ -79,12 +81,12 @@ export default function App() {
     };
 
     const handlerAddNewTask = () => {
-        const title = prompt('Título da Tarefa:');
+        const titleField = document.getElementById('task-title');
+        const title = (titleField as HTMLInputElement).value;
+        const description = (document.getElementById('task-description') as HTMLInputElement).value;
         if (!title) {
-            return;
-        }
-        const description = prompt('Descrição da Tarefa:');
-        if (!description) {
+            titleField?.classList.toggle('required');
+            setTimeout(() => titleField?.classList.toggle('required'), 1000);
             return;
         }
         const task = {
@@ -97,6 +99,7 @@ export default function App() {
         setOperacao(Operacao.inclusao);
         setTask(task);
         setTasks([...tasks, task] as never[]);
+        setIsModalVisible(false);
     };
 
     return (
@@ -111,9 +114,14 @@ export default function App() {
                     />
                 ))}
             </TasksGrid>
-
+            {isModalVisible && (
+                <NewTaskDialog
+                    handleConfirmButton={handlerAddNewTask}
+                    handleCloseButton={() => setIsModalVisible(false)}
+                />
+            )}
             <ButtonArea>
-                <Button text="Nova Tarefa" onClick={handlerAddNewTask} />
+                <Button text="Nova Tarefa" onClick={() => setIsModalVisible(true)} />
             </ButtonArea>
         </AppContainer>
     );

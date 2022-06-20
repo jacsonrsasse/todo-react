@@ -20,4 +20,4 @@ As funcionalidades previstas para o projeto já estão prontas em um outro proje
 -   [x] Criar a integração com o IndexedDB do navegador, permitindo assim o armazenamento das tarefas e seus estados
     -   \(Opcional) Tentar construir a parte do IndexedDB por conta própria. No momento está utilizando a biblioteca [IBD](https://github.com/jakearchibald/idb).
 -   [x] Melhorar o visual da aplicação, disponibilizando outros temas. Trabalhar com o themes do styled-components.
--   [ ] Melhorar a inclusão de tarefas, criar uma tela de inclusão ao invés de utilizar o promp do navegador.
+-   [x] Melhorar a inclusão de tarefas, criar uma tela de inclusão ao invés de utilizar o promp do navegador.
