@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface ButtonDesignProps {
+    primary: boolean;
+}
 
 const ButtonDesign = styled.button`
     padding: 0.5rem 0;
@@ -17,6 +21,13 @@ const ButtonDesign = styled.button`
         border-color: ${(props) => props.theme.background};
         color: ${(props) => props.theme.buttonActiveText};
     }
+
+    ${({ primary }: ButtonDesignProps) =>
+        primary &&
+        css`
+            color: white;
+            background-color: ${(props) => props.theme.buttonBorderColor};
+        `}
 `;
 
 export default ButtonDesign;

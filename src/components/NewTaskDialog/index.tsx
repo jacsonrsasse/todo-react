@@ -25,7 +25,7 @@ export function NewTaskDialog({ handleConfirmButton, handleCloseButton }: NewTas
                     </div>
                 </div>
                 <ButtonArea>
-                    <Button text="Confirmar" onClick={handleConfirmButton} />
+                    <Button text="Confirmar" onClick={handleConfirmButton} primary />
                     <Button text="Fechar" onClick={handleCloseButton} />
                 </ButtonArea>
             </div>

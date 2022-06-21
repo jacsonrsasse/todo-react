@@ -1,10 +1,15 @@
 import ButtonDesign from './style';
 
-interface ButtonProps {
+export interface ButtonProps {
     text: string;
     onClick: () => void;
+    primary?: boolean;
 }
 
-export function Button({ text, onClick }: ButtonProps) {
-    return <ButtonDesign onClick={onClick}>{text}</ButtonDesign>;
+export function Button({ primary, text, onClick }: ButtonProps) {
+    return (
+        <ButtonDesign onClick={onClick} primary={primary || false}>
+            {text}
+        </ButtonDesign>
+    );
 }
