@@ -17,8 +17,8 @@ enum Operacao {
 
 export default function App() {
     const [operacao, setOperacao] = useState(Operacao.nenhuma);
-    const [task, setTask] = useState({});
-    const [tasks, setTasks] = useState([]);
+    const [task, setTask] = useState( {} );
+    const [tasks, setTasks] = useState(Array<ITask>);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export default function App() {
             const indexedDb = new IndexedDBTasksHandler();
             await indexedDb.openDB();
             const tasks = await indexedDb.getAllTasks();
-            setTasks(tasks);
+            setTasks((t) => [...t, ...tasks]);
         };
         runDb();
     }, []);
