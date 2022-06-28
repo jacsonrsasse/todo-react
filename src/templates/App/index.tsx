@@ -22,7 +22,6 @@ export default function App() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
-        console.log('didMount');
         const runDb = async () => {
             const indexedDb = new IndexedDBTasksHandler();
             await indexedDb.openDB();
