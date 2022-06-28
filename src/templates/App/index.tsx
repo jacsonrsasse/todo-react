@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AppContainer } from './style';
 import { TasksGrid } from '../../components/TasksGrid';
 import { ButtonArea } from '../../components/ButtonArea';
@@ -104,14 +104,19 @@ export default function App() {
     return (
         <AppContainer id="app">
             <TasksGrid>
-                {tasks.map((info: ITask) => (
-                    <Task
-                        key={info.key}
-                        taskInfo={info}
-                        handleDeleteTask={handleDeleteTask}
-                        handleUpdateTask={handleUpdateTask}
-                    />
-                ))}
+                {useMemo(() => {
+                    return (
+                        tasks.length > 0 &&
+                        tasks.map((info: ITask) => (
+                            <Task
+                                key={info.key}
+                                taskInfo={info}
+                                handleDeleteTask={handleDeleteTask}
+                                handleUpdateTask={handleUpdateTask}
+                            />
+                        ))
+                    );
+                }, [tasks])}
             </TasksGrid>
             {isModalVisible && (
                 <NewTaskDialog
@@ -119,9 +124,14 @@ export default function App() {
                     handleCloseButton={() => setIsModalVisible(false)}
                 />
             )}
-            <ButtonArea>
-                <Button text="Nova Tarefa" onClick={() => setIsModalVisible(true)} />
-            </ButtonArea>
+            {useMemo(() => {
+                return (
+                    <ButtonArea>
+                        <Button text="Nova Tarefa" onClick={() => setIsModalVisible(true)} />
+                    </ButtonArea>
+                );
+            }, [setIsModalVisible])}
+            
         </AppContainer>
     );
 }
